@@ -1,0 +1,1100 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Team Colors */
+    --mclaren-primary: #ff8000;
+    --mclaren-secondary: #47c7fc;
+    --ferrari-primary: #dc143c;
+    --ferrari-secondary: #ffd700;
+    --mercedes-primary: #00d2be;
+    --mercedes-secondary: #c0c0c0;
+    --redbull-primary: #1e41ff;
+    --redbull-secondary: #dc143c;
+    --williams-primary: #005aff;
+    --williams-secondary: #ffffff;
+    --kick-primary: #00ff41;
+    --kick-secondary: #000000;
+    --racing-bulls-primary: #6692ff;
+    --racing-bulls-secondary: #1e41ff;
+    --aston-primary: #006f62;
+    --aston-secondary: #00d2be;
+    --haas-primary: #ffffff;
+    --haas-secondary: #ed1c24;
+    --alpine-primary: #0090ff;
+    --alpine-secondary: #ff87bc;
+    
+    /* Common Colors */
+    --background-dark: #0a0a0a;
+    --background-card: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-gold: #ffd700;
+    --racing-gradient: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd700 50%, #ff6b35 75%, #f7931e 100%);
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: var(--background-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Racing Lines Background Animation */
+.racing-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.racing-line {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: var(--racing-gradient);
+    opacity: 0.3;
+    animation: racingLineMove linear infinite;
+}
+
+@keyframes racingLineMove {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+/* Header Styles */
+.header {
+    position: relative;
+    z-index: 10;
+    padding: 60px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-bottom: 3px solid var(--accent-gold);
+}
+
+.main-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    background: var(--racing-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.main-title i {
+    margin-right: 20px;
+    color: var(--accent-gold);
+    -webkit-text-fill-color: var(--accent-gold);
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.season-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.season-badge, .teams-count {
+    padding: 12px 24px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid var(--accent-gold);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Navigation Styles */
+.team-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.nav-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.nav-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-item {
+    flex-shrink: 0;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    white-space: nowrap;
+}
+
+/* Team-specific navigation colors */
+.mclaren-nav { background: linear-gradient(135deg, var(--mclaren-primary), var(--mclaren-secondary)); }
+.ferrari-nav { background: linear-gradient(135deg, var(--ferrari-primary), var(--ferrari-secondary)); }
+.mercedes-nav { background: linear-gradient(135deg, var(--mercedes-primary), var(--mercedes-secondary)); }
+.redbull-nav { background: linear-gradient(135deg, var(--redbull-primary), var(--redbull-secondary)); }
+.williams-nav { background: linear-gradient(135deg, var(--williams-primary), var(--williams-secondary)); }
+.kick-nav { background: linear-gradient(135deg, var(--kick-primary), var(--kick-secondary)); }
+.racing-bulls-nav { background: linear-gradient(135deg, var(--racing-bulls-primary), var(--racing-bulls-secondary)); }
+.aston-nav { background: linear-gradient(135deg, var(--aston-primary), var(--aston-secondary)); }
+.haas-nav { background: linear-gradient(135deg, var(--haas-secondary), var(--haas-primary)); }
+.alpine-nav { background: linear-gradient(135deg, var(--alpine-primary), var(--alpine-secondary)); }
+
+.nav-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    z-index: 10;
+    padding: 60px 0;
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    background: var(--racing-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Championship Status */
+.championship-status {
+    margin-bottom: 80px;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.status-item {
+    background: var(--background-card);
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.status-item:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.status-item i {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+}
+
+.status-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.status-item p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Achievements Section */
+.achievements-section {
+    margin-bottom: 80px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 20px;
+    padding: 60px 30px;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.achievements-subsection {
+    margin-bottom: 50px;
+}
+
+.achievements-subsection:last-child {
+    margin-bottom: 0;
+}
+
+.subsection-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.achievement-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.achievement-rank {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent-gold);
+    min-width: 50px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.achievement-content h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.achievement-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 5px;
+}
+
+.achievement-detail {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.achievement-years {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Team-specific achievement cards */
+.ferrari-achievement { border-color: var(--ferrari-primary); }
+.ferrari-achievement::before { background: var(--ferrari-primary); }
+
+.mclaren-achievement { border-color: var(--mclaren-primary); }
+.mclaren-achievement::before { background: var(--mclaren-primary); }
+
+.williams-achievement { border-color: var(--williams-primary); }
+.williams-achievement::before { background: var(--williams-primary); }
+
+.mercedes-achievement { border-color: var(--mercedes-primary); }
+.mercedes-achievement::before { background: var(--mercedes-primary); }
+
+.redbull-achievement { border-color: var(--redbull-primary); }
+.redbull-achievement::before { background: var(--redbull-primary); }
+
+.hamilton-achievement { border-color: var(--mercedes-primary); }
+.hamilton-achievement::before { background: var(--mercedes-primary); }
+
+.schumacher-achievement { border-color: var(--ferrari-primary); }
+.schumacher-achievement::before { background: var(--ferrari-primary); }
+
+.verstappen-achievement { border-color: var(--redbull-primary); }
+.verstappen-achievement::before { background: var(--redbull-primary); }
+
+.vettel-achievement { border-color: var(--redbull-secondary); }
+.vettel-achievement::before { background: var(--redbull-secondary); }
+
+.prost-achievement { border-color: var(--mclaren-secondary); }
+.prost-achievement::before { background: var(--mclaren-secondary); }
+
+.senna-achievement { border-color: var(--mclaren-primary); }
+.senna-achievement::before { background: var(--mclaren-primary); }
+
+/* Race Wins Grid */
+.race-wins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.race-win-item {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid;
+    transition: all 0.3s ease;
+}
+
+.race-win-item:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateX(5px);
+}
+
+.constructor-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.wins-count {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+/* Race wins team colors */
+.ferrari-wins { border-left-color: var(--ferrari-primary); }
+.mclaren-wins { border-left-color: var(--mclaren-primary); }
+.mercedes-wins { border-left-color: var(--mercedes-primary); }
+.williams-wins { border-left-color: var(--williams-primary); }
+.redbull-wins { border-left-color: var(--redbull-primary); }
+.others-wins { border-left-color: var(--accent-gold); }
+
+/* Teams Grid */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.team-card {
+    background: var(--background-card);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    border: 3px solid transparent;
+    position: relative;
+}
+
+.team-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Team-specific borders */
+.mclaren { border-color: var(--mclaren-primary); }
+.ferrari { border-color: var(--ferrari-primary); }
+.mercedes { border-color: var(--mercedes-primary); }
+.redbull { border-color: var(--redbull-primary); }
+.williams { border-color: var(--williams-primary); }
+.kick-sauber { border-color: var(--kick-primary); }
+.racing-bulls { border-color: var(--racing-bulls-primary); }
+.aston-martin { border-color: var(--aston-primary); }
+.haas { border-color: var(--haas-secondary); }
+.alpine { border-color: var(--alpine-primary); }
+
+.team-header {
+    padding: 30px 30px 20px;
+}
+
+.team-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.team-badges span {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.champion-badge { background: linear-gradient(135deg, var(--accent-gold), #ffed4a); color: #000; }
+.legendary-badge { background: linear-gradient(135deg, var(--ferrari-primary), var(--ferrari-secondary)); color: #fff; }
+.dominant-badge { background: linear-gradient(135deg, var(--mercedes-primary), var(--mercedes-secondary)); color: #000; }
+.defending-badge { background: linear-gradient(135deg, var(--redbull-primary), var(--redbull-secondary)); color: #fff; }
+.historic-badge { background: linear-gradient(135deg, var(--williams-primary), var(--williams-secondary)); color: #fff; }
+.new-badge { background: linear-gradient(135deg, var(--kick-primary), var(--kick-secondary)); color: #000; }
+.sister-badge { background: linear-gradient(135deg, var(--racing-bulls-primary), var(--racing-bulls-secondary)); color: #fff; }
+.luxury-badge { background: linear-gradient(135deg, var(--aston-primary), var(--aston-secondary)); color: #fff; }
+.american-badge { background: linear-gradient(135deg, var(--haas-secondary), var(--haas-primary)); color: #000; }
+.french-badge { background: linear-gradient(135deg, var(--alpine-primary), var(--alpine-secondary)); color: #fff; }
+
+.engine-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Car Display */
+.car-display {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    margin: 0 20px 30px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: brightness(0.9) saturate(1.2);
+}
+
+.team-card:hover .car-image {
+    transform: scale(1.1);
+    filter: brightness(1) saturate(1.4);
+}
+
+.car-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--accent-gold);
+    font-size: 3rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.team-card:hover .car-overlay {
+    opacity: 0.8;
+}
+
+/* Team Info */
+.team-info {
+    padding: 0 30px 30px;
+}
+
+.drivers-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drivers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.driver {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.driver:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.driver-number {
+    background: var(--accent-gold);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 35px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.driver-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.driver-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.driver-wins {
+    font-size: 0.85rem;
+    color: var(--accent-gold);
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.driver-country {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.team-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Engine Suppliers Section */
+.engines-section {
+    margin-bottom: 80px;
+}
+
+.engines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.engine-card {
+    background: var(--background-card);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.engine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.mercedes-engine { border-color: var(--mercedes-primary); }
+.ferrari-engine { border-color: var(--ferrari-primary); }
+.honda-engine { border-color: var(--redbull-primary); }
+.renault-engine { border-color: var(--alpine-primary); }
+
+.engine-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.supplied-teams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.supplied-teams .team-badge {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-top: 3px solid var(--accent-gold);
+    padding: 60px 0 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.footer-section li:before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    
+    .teams-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .team-card {
+        margin: 0 10px;
+    }
+    
+    .drivers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .season-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-scroll {
+        padding: 10px 0;
+    }
+    
+    .nav-item {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+    
+    .car-display {
+        height: 200px;
+        margin: 0 15px 25px;
+    }
+    
+    .team-info {
+        padding: 0 25px 25px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Achievements responsive */
+    .achievements-section {
+        padding: 40px 20px;
+        margin: 0 10px 60px;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .race-wins-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .subsection-title {
+        font-size: 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .achievement-card {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .achievement-rank {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .teams-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .team-card {
+        margin: 0 5px;
+    }
+    
+    .team-header {
+        padding: 20px 20px 15px;
+    }
+    
+    .team-name {
+        font-size: 1.4rem;
+    }
+    
+    .car-display {
+        height: 180px;
+        margin: 0 10px 20px;
+    }
+    
+    .team-info {
+        padding: 0 20px 20px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Achievements mobile styles */
+    .achievements-section {
+        padding: 30px 15px;
+        margin: 0 5px 50px;
+    }
+    
+    .subsection-title {
+        font-size: 1.2rem;
+    }
+    
+    .achievement-card {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .achievement-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .achievement-number {
+        font-size: 1.2rem;
+    }
+    
+    .race-win-item {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* Performance Optimizations */
+.team-card {
+    will-change: transform, opacity;
+}
+
+.car-image {
+    will-change: transform;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for accessibility */
+.nav-item:focus,
+.team-card:focus {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .racing-lines,
+    .nav-item,
+    .car-overlay {
+        display: none;
+    }
+    
+    .team-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Team Profiles Section */
+.team-profiles-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    margin-top: 60px;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.profile-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.1);
+}
+
+.profile-card h3 {
+    color: var(--accent-gold);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+}
+
+.profile-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.profile-card strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* News Section */
+.news-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    text-align: center;
+}
+
+.news-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.news-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.news-link {
+    margin: 40px 0;
+}
+
+.f1-news-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffcc00 100%);
+    color: #000;
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.f1-news-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #ffcc00 0%, var(--accent-gold) 100%);
+}
+
+.news-description {
+    text-align: left;
+    margin: 40px 0 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.news-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.news-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.news-features i {
+    color: var(--accent-gold);
+    width: 20px;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .profiles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .profile-card {
+        padding: 20px;
+    }
+    
+    .news-section {
+        padding: 60px 0;
+    }
+    
+    .f1-news-button {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+}
